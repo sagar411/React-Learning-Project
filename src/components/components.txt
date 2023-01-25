@@ -1,0 +1,30 @@
+-Components =>Reusable Code block that can independently represent someting
+    -There are 2 types of react Components 
+        a. Class Based (Stateful) Components
+            -if any components is created by using a class and is child of 
+            react.components class 
+            -Class based component can store states with in the component itself by default
+            -now days class based compoents are less use 
+
+        b. function Base (Stateless) Components
+            -if we made any compoents using function it is called functional compoenet
+            -it cannot store state by default by themself without use of hooks 
+            -react hook introduced to create states 
+
+##major toics in React and react native are 
+    State 
+    Props
+
+-State:
+    the data which is preserved or stored within the react compoenet is state
+    Class base Structure --- this.state
+    Functional Components-useState() is created 
+
+    note: individual compoenet execute individual data
+    kunai pani compoenet ma store vayera baseko data
+-Props: 
+    the incoming data for the compoenet is Props
+    it is read only property we can only read data
+
+    
+
