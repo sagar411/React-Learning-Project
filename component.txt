@@ -1,0 +1,71 @@
+there are three stage in component lifecycle
+#for calss base component
+ 1. Mounting stage
+    a.Class Base component
+        1-contructor()
+        2-render()
+        3-componentDidMount()
+            --if state change it will call componentDidMount()        
+ 2. Update stage
+            if any state change it will call render()
+        4-render()
+        5.componentDidUpdated()
+        6- it will make a cicyle
+ 3. Unmounting stage
+        when component switch
+
+        -componentDidUnmount()
+
+#for functional component
+        useState()
+        useEffect()
+
+
+#Web HOOK
+
+We convert stateful componenet to stateless componenet 
+
+hooks are special function define by react or any package in order to achive the features provide by class 
+base structure
+
+--mainly there any two hooks of react
+# state hooks
+    it is used to create state inside functional componenet
+
+    eg.
+
+    import {useState} from "react"
+
+    function Component (){
+        let [state,setState]= useState(default Vlue);
+    }
+
+
+state change
+
+
+
+## Effect Hook
+    to contorl the change of state of a compoenent
+eg. 
+
+    import {useEffect} from "react"
+
+    function Component()=>{
+       
+        let [state1, setState]=useState();
+        let [state2, setState]=useState();
+        let [state3, setState]=useState();
+
+
+         useEffect(()=>{}) //This hook always executes irrespective of any event any time all the hook change it will  render
+         useEffect(()=>{},[]) this hook calls only once when the compoenet first time load
+         example useEffect(()=>{},[state1]) this hook only execute when the change of state1
+    }
+
+    //header 
+    //body
+    form 
+    table detail
+    
+    //footer
