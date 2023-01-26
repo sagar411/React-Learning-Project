@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useState } from "react";
-    
+import HeaderComponent from "../../components/header.component";
 //     return (
 //         <div>
 //             <div>{props.name}</div>
@@ -42,10 +42,14 @@ class HomePage extends React.Component{
             return{
                 ...pre,
                 loading:false
+                
             }
         },()=>{
             console.log("from second parameneter")
         })
+
+
+
     }
 
     componentDidUpdate =()=>{
@@ -58,8 +62,13 @@ class HomePage extends React.Component{
     render =()=>{
         console.log("2.Render-i am second call and every stateUpdate Call")
         return(
+            <>
+             
+            <HeaderComponent></HeaderComponent>
+            
            <UserTable users={this.state.users} title = "Table"></UserTable>
-                
+            </>    
+           
             // <div>{this.props.name}
             // <div>{this.state.name}</div>
             // {/* {this.props.counter()} */}
@@ -71,7 +80,7 @@ class HomePage extends React.Component{
 
 // const UserTable =(props)=>{ //losely coupled
 const UserTable =({users,title})=>{ //tightly coupled
-    let [loading, setLoading] = useState(false);
+    let [loading] = useState(false);
     // setLoading(true);
     return(
         <div>

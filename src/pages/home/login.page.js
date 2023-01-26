@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col,Form,Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
-
+import HeaderComponent from "../../components/header.component";
 const LoginPage = (props) => {
     //USE STATE CAN RECIEVE A PARAMETER
     let [email,setEmail] = useState("sagar.sunar411@gmai.com");
@@ -18,7 +18,7 @@ const LoginPage = (props) => {
         
         // [] only execute when the component loads
         console.log(" only once2")
-        // setEmail("CHANGE VALUE")
+        setEmail("CHANGE VALUE")
     }, [])
 
     useEffect (()=>{
@@ -28,6 +28,9 @@ const LoginPage = (props) => {
     }, [email,loading])
     
   return (
+    <>
+    <HeaderComponent/>
+    
     <Container fluid>
       <Row>
         <Col sm={12} md={9} lg={{ offset: 3, span: 6 }} className="my-5">
@@ -58,15 +61,18 @@ const LoginPage = (props) => {
             <Button variant="primary" type="submit">
               Submit
             </Button>
-            or <a>Register Now</a>
+            {/* or <a>Register Now</a> */}
           </Form>
         </Col>
       </Row>
     </Container>
-    // <div className="container">
+    
+    {/* // <div className="container">
 
     //     LoginPage
-    // </div>
+    // </div> */}
+
+    </>
   );
 };
 
