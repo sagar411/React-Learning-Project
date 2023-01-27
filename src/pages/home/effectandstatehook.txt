@@ -1,0 +1,24 @@
+       let [email,setEmail] = useState("sagar.sunar411@gmai.com");
+    let[loading, setLoading]= useState(false);
+    
+//effect state create , state change , component load if there is any side effet useEffect listen
+    useEffect (()=>{
+        // always execute whenever any stae varitable is change 
+        // [] only execute when the component loads
+        console.log(" always execute1")
+    })
+
+
+    useEffect (()=>{
+        setLoading(true)
+        
+        // [] only execute when the component loads
+        console.log(" only once2")
+        setEmail("CHANGE VALUE")
+    }, [])
+
+    useEffect (()=>{
+        // when email value change 
+        console.log(" ONLY EMAIL execute3")
+        
+    }, [email,loading])

@@ -30,7 +30,15 @@ class HomePage extends React.Component{
                     name:"Ajay Sunar",
                     email:"ajay.sunar411@gmail.com",
                     phone:123454
-                },
+                },{
+                    name:"Ajay Sunar",
+                    email:"ajay.sunar411@gmail.com",
+                    phone:123454
+                },{
+                    name:"Sahil",
+                    email:"sagh8il@gfmai;ll",
+                    phone:4554
+                }
             ],
             loading:false
         }
