@@ -2,6 +2,7 @@ import { Container, Row, Col, Form, Button} from "react-bootstrap"
 
 import {NavLink} from "react-router-dom"
 import HeaderComponent from "../../components/header.component"
+import { InputComponent } from "../../components/input/input.component"
 const RegisterPage = () => {
     return (
         <>
@@ -18,12 +19,8 @@ const RegisterPage = () => {
                 <Row>
                     <Col sm={12} md={{ offset: 3, span: 6 }} className="my-1">
                         <Form>
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
-                                <Form.Label>Name</Form.Label>
-                                <Form.Control type="text" name="name" placeholder="Enter Name" size="sm" />
-                                <Form.Text className="text-muted">
-                                </Form.Text>
-                            </Form.Group>
+                            <InputComponent type= "text" fieldname="Name :" name="name" placeholder="EnterYour name" />
+                       
 
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Label>Email address</Form.Label>
