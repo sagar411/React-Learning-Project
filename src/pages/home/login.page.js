@@ -25,7 +25,7 @@ const LoginPage = (props) => {
       [name]:value
     })
   }
-console.log(data)
+// console.log(data)
   return (
     <>
       <HeaderComponent />
@@ -40,7 +40,9 @@ console.log(data)
 
         <Row>
           <Col sm={12} md={{ offset: 3, span: 6 }} className="my-1">
-            <Form>
+            <Form onSubmit={(e)=>{
+              e.preventDefault();
+            }}>
               <EmailInput fieldname="UserName :" name="email" placeholder="enter your name" handleChange={handleChange} />
               
               <PasswordInput fieldname="password :" name = "password" placeholder="enter your password" handleChange = {handleChange}/> 
