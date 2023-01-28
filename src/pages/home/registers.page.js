@@ -1,10 +1,15 @@
-import { Container, Row, Col, Form, Button } from "react-bootstrap"
+import { Container, Row, Col, Form, Button, Toast } from "react-bootstrap"
 
 import { NavLink } from "react-router-dom"
 import HeaderComponent from "../../components/header.component"
-import { InputComponent } from "../../components/input/input.component"
-import { useFormik } from "formik"
-import * as Yup from "yup"
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import axios from "axios";
+import {ToastContainer, toast} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"
+import { postRequest } from "../../services/axios.services";
+import { registerUser } from "../../services/user.service";
+import {  useNavigate } from "react-router-dom";
 const RegisterPage = () => {
 
     let registerSchema = Yup.object().shape({
@@ -18,6 +23,8 @@ const RegisterPage = () => {
             .min(8, "Password should be atleast 8 charater long").required("PASSWORD IS REQUIRED"),
         role: Yup.string().required("Role is Reduiresd")
     })
+
+    let navigate = useNavigate();
     const formik = useFormik(
         {
             initialValues: {
@@ -30,15 +37,48 @@ const RegisterPage = () => {
                 //data 
             },
             validationSchema: registerSchema,
-            onSubmit: (values) => {
-                console.log(" values:", values)
+            onSubmit: async (values) => {
+                
+//await axios.post("http://localhost:3006/user", values ,{
+//     headers :{
+//         "Content-Type" :"multipart/form-data"
+//     }
+// } )  `
+                try{
+                    let registerd_user = await registerUser(values);
+                        toast.success("User registerd successfully")
+                    // if(registerd_user.data.status){
+                    //     toast.success("Your Account has been created Successfully")
+                    // }else{
+                    //     toast.error("sorry there was problem while creating acount")
+                    // }
+                    // console.log("Response", response)
+                    navigate("/login")
+                }catch(error){
+                    toast.error(error.message)
+                    console.log("Errorr",error)
+                }
+               
+                // CORS => Cross Origin Reference Site 
+                //http://localhost:3000 ===> https://locahlhost:3005
+                //we should accecpt cors from server
+
+                /**
+                 * config =>Object
+                 * headers =>Object
+                 * data =>{}=> API response
+                 * status =>number http response
+                 * statusText => String
+                 * request => Object
+                 */
             }
+
         }
     )
-
     return (
         <>
             <HeaderComponent />
+            <ToastContainer/>
             <Container fluid>
                 <Row>
                     <Col sm={12} md={9} lg={{ offset: 3, span: 6 }} className="my-5">
@@ -51,7 +91,7 @@ const RegisterPage = () => {
                 <Row>
                     <Col sm={12} md={{ offset: 3, span: 6 }} className="my-1">
                         <Form onSubmit={formik.handleSubmit}>
-                            <Form.Group className="mb-3" controlId="name">
+                            <Form.Group className="mb-3" controlId="name" >
                                 <Form.Label>Name</Form.Label>
                                 <Form.Control name="name" onChange={formik.handleChange} required value={formik.values.name} placeholder="Enter your name" />
                                 {

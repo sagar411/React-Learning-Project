@@ -3,6 +3,11 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import HeaderComponent from "../../components/header.component";
 import { EmailInput, PasswordInput } from "../../components/input/input.component";
+import { toast,ToastContainer } from "react-toastify";
+import { postRequest } from "../../services/axios.services";
+import "react-toastify/dist/ReactToastify.css"; 
+
+import { NavLink, useNavigate } from "react-router-dom";
 //validation
 // // type 1--bad habit
 // let [email, setEmail] = useState();
@@ -25,10 +30,22 @@ const LoginPage = (props) => {
       [name]:value
     })
   }
+
+  const handleSubmit = async (e)=>{
+    e.preventDefault();
+
+    try{  
+      let user = await postRequest("/auth/login",data);
+      console.log("user",user)
+    }catch(err){
+      toast.error(err.message);
+    }
+  }
 // console.log(data)
   return (
     <>
       <HeaderComponent />
+      <ToastContainer/>
       <Container fluid>
         <Row>
           <Col sm={12} md={9} lg={{ offset: 3, span: 6 }} className="my-5">
@@ -40,9 +57,7 @@ const LoginPage = (props) => {
 
         <Row>
           <Col sm={12} md={{ offset: 3, span: 6 }} className="my-1">
-            <Form onSubmit={(e)=>{
-              e.preventDefault();
-            }}>
+            <Form onSubmit={handleSubmit}>
               <EmailInput fieldname="UserName :" name="email" placeholder="enter your name" handleChange={handleChange} />
               
               <PasswordInput fieldname="password :" name = "password" placeholder="enter your password" handleChange = {handleChange}/> 
