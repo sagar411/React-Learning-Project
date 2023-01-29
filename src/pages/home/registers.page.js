@@ -53,8 +53,19 @@ const RegisterPage = () => {
                     //     toast.error("sorry there was problem while creating acount")
                     // }
                     // console.log("Response", response)
-                    navigate("/login")
-                }catch(error){
+                   navigate("/login")
+                    // setTimeout(()=>{
+                    //     navigate("/login
+                        
+                        
+                        
+                        
+                        
+                        
+                    //     ")
+ 
+                    // },2000)
+                                   }catch(error){
                     toast.error(error.message)
                     console.log("Errorr",error)
                 }

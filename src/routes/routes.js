@@ -7,10 +7,26 @@ import AdminLayout from "../pages/cms/admin.pages";
 import AdminDashboard from "../pages/cms/admin-dashboard-page";
 import UserListPage from "../pages/cms/user-list.page";
 import ProductDetail from "../pages/home/product-detail.page"
-
+import { getRequest } from "../services/axios.services";
+import { useState,useEffect } from "react";
 const PrivateComponent = ({component})=>{
-    let is_logged_in = true;
+    let is_logged_in = localStorage.getItem("token")
+//     let [is_logged_in,setIsLoogedIn] = useState(false);
+//   const getUser = async ()=>{
+//     let token =localStorage.getItem("token");
 
+//     let user = await getRequest();
+
+//     if(user){
+//         setIsLoogedIn(true);
+//     }
+
+//   }
+//     useEffect(() => {
+//         getUser()
+//     // console.log("users", user)
+    
+//    },[])
     return(is_logged_in ?component :<Navigate to ="/login"/>)
 }
 
@@ -32,7 +48,11 @@ const Routing = () => {
                         <Route path="user" element = {<UserListPage tittle = "User List"/>}/>
 
                     </Route>
+                    <Route path="/customer" element={<PrivateComponent component={<AdminLayout />}/>}>
+                    <Route index element={<AdminDashboard />} />
+                    </Route>
                     <Route path="*" element={<ErrorPage />} />
+                    
                 </Routes>
 
             </BrowserRouter>
