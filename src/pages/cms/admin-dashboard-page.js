@@ -2,6 +2,7 @@ import "bootstrap"
 const AdminDashboard = ()=>{
     return (
         <>
+        
         <div className="container-fluid px-4">
                         <h1 className="mt-4">Static Navigation</h1>
                         <ol className="breadcrumb mb-4">
@@ -19,7 +20,7 @@ const AdminDashboard = ()=>{
                                 </p>
                             </div>
                         </div>
-                        <div style={{height: "100vh"}}></div>
+                        {/* <div style={{height: "100vh"}}></div> */}
                         <div className="card mb-4"><div className="card-body">When scrolling, the navigation stays at the top of the page. This is the end of the static navigation demo.</div></div>
                     </div>
         </>
