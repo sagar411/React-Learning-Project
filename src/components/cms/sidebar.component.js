@@ -9,6 +9,7 @@ export  const SidebarComponent =()=>{
                     <div className="sb-sidenav-menu">
                         <div className="nav">
                             <div className="sb-sidenav-menu-heading">Core</div>
+
                             <NavLink className="nav-link" to="/admin">
                                 <div className="sb-nav-link-icon">
                                     <i className="fas fa-tachometer-alt"></i></div>
@@ -31,9 +32,10 @@ export  const SidebarComponent =()=>{
                                     <i className="fa fa-sitemap"></i></div>
                                 category
                             </NavLink>
+
                             <NavLink className="nav-link" to="/admin/product">
                                 <div className="sb-nav-link-icon">
-                                    <i class="fas fa-product-hunt"></i></div>
+                                    <i className="fas fa-product-hunt"></i></div>
                                 product
                             </NavLink>
                             <NavLink className="nav-link" to="/admin/users">
@@ -60,7 +62,7 @@ export  const SidebarComponent =()=>{
 
                             <NavLink className="nav-link" to="/admin/settings">
                                 <div className="sb-nav-link-icon">
-                                    <i class="fa-solid fa-gears"></i></div>
+                                    <i className="fa-solid fa-gears"></i></div>
                                 Setting
                             </NavLink>
                           

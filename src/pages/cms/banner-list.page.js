@@ -54,9 +54,10 @@ const BannerListPage = () => {
     return (
         <>
 
-            <BreadCrumb title="Banner Page" pageTitle="Banner List" addBtn={true} path="/admin/banner/create" page="/admin" />
+            
             <div className="container-fluid px-4">
-
+            <BreadCrumb title="Banner Page" pageTitle="Banner List" addBtn={true} path="/admin/banner/create" page="Banner" />
+            
                 <div className="card mb-4">
                     <div className="card-body">
                         <DataTable

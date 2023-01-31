@@ -101,6 +101,8 @@ const RegisterPage = () => {
 
                 <Row>
                     <Col sm={12} md={{ offset: 3, span: 6 }} className="my-1">
+                        
+                        
                         <Form onSubmit={formik.handleSubmit}>
                             <Form.Group className="mb-3" controlId="name" >
                                 <Form.Label>Name</Form.Label>

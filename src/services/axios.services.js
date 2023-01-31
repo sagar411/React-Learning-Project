@@ -13,6 +13,8 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.response.use((response)=>{
     if(response.status ===200){
         return response.data
+    }else if(response.status ===403){
+        localStorage.clear();
     }else{
         console.log("Error Interceptor", response);
         return response;

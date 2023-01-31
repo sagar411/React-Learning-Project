@@ -13,7 +13,7 @@ export  const BreadCrumb = ({title, pageTitle, addBtn,path,page})=>{
         <li className="breadcrumb-item" >
             <NavLink to="/admin" > DrashBoard</NavLink>
         </li>
-        <li className="breadcrumb-item active">Banner List</li>
+        <li className="breadcrumb-item active">{pageTitle}</li>
 
     </ol>
     

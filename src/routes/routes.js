@@ -10,6 +10,7 @@ import ProductDetail from "../pages/home/product-detail.page"
 import { getRequest } from "../services/axios.services";
 import { useState,useEffect } from "react";
 import BannerListPage from "../pages/cms/banner-list.page";
+import BannerCreatePage from "../pages/cms/banner-create.page";
 const PrivateComponent = ({component})=>{
     let is_logged_in = localStorage.getItem("token")
 //     let [is_logged_in,setIsLoogedIn] = useState(false);
@@ -49,6 +50,7 @@ const Routing = () => {
                         <Route index element={<AdminDashboard />} />
                         <Route path="user" element = {<UserListPage tittle = "User List"/>}/>
                         <Route path = "banner" element= {<BannerListPage/>}/>
+                        <Route path = "banner/create" element = {<BannerCreatePage/>}/>
                     </Route>
                     <Route path="/customer" element={<PrivateComponent component={<AdminLayout />}/>}>
                     <Route index element={<AdminDashboard />} />
