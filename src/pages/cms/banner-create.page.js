@@ -5,6 +5,8 @@ const  BannerCreatePage = () => {
     const handleAddAction =(data)=>{
         console.log("Data", data)
     }
+    
+
     return (
         <>
             <div className="container-fluid px-4">
@@ -12,7 +14,7 @@ const  BannerCreatePage = () => {
                 <div className="card mb-4">
                     <div className="card-body">
                         <LabelFormComponent 
-                            onSubmit={handleAddAction}
+                          onSubmitEvent={handleAddAction}
                             type="banner"
                         />
                     </div>
