@@ -9,6 +9,7 @@ const axiosInstance = axios.create({
     }
     
 })
+let headers = {}
 
 axiosInstance.interceptors.response.use((response)=>{
     if(response.status ===200){
@@ -20,8 +21,32 @@ axiosInstance.interceptors.response.use((response)=>{
         return response;
     }
 })
-export const postRequest = (url, data)=>{
-    return axiosInstance.post(url,data);
+
+const getHeaders = (is_strict, form_data=false)=>{
+    if(is_strict){
+        let token = localStorage.getItem("token")
+        headers = {
+            ...headers,
+            headers:{
+                "authorization":"Bearer "+token
+            }
+        }
+        if(form_data){
+            headers ={
+                ...headers,
+                headers :{
+                    "content-type":"multipart/form-data",
+                    ...headers.headers
+                }
+            }
+        }
+        
+    }
+}
+export const postRequest = (url, data,is_strict=false, form_data = false)=>{
+    getHeaders(is_strict,form_data)
+   
+    return axiosInstance.post(url,data,headers);
 }
 
 export const  getRequest = (url, is_strict = false)=>{

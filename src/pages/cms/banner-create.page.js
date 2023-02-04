@@ -1,12 +1,19 @@
 import { BreadCrumb } from "../../components/cms/breadcrumb.component";
 import LabelFormComponent from "../../components/cms/label-form.component";
+import { bannerCreate } from "../../services/banner.service";
 const  BannerCreatePage = () => {
 
-    const handleAddAction =(data)=>{
-        console.log("Data", data)
+    const handleAddAction =async(data)=>{
+        // console.log("Data", data)
+        //we have to write form data method 
+        try {
+          let response =  await bannerCreate(data);
+          console.log("response", response)
+        }catch(error){
+            console.log("error", error)
+        }
     }
     
-
     return (
         <>
             <div className="container-fluid px-4">
