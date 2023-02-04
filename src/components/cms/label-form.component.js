@@ -3,9 +3,9 @@ import * as Yup from "yup";
 import { Row, Col, Form, Button, Toast } from "react-bootstrap"
 const LabelFormComponent = ({ type, onSubmitEvent }) => {
     let validationSchema = Yup.object().shape({
-        title: Yup.string().required("Title is required"),
-        link: Yup.string(),
-        status: Yup.string(),
+        title: Yup.string().required("Title is required").nullable(),
+        link: Yup.string().nullable(),
+        status: Yup.string().nullable(),
     })
     let formik = useFormik({
         initialValues: {

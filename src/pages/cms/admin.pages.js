@@ -4,13 +4,14 @@ import "../../assets/css/styles.css"
 import { Outlet } from "react-router-dom"
 import { NavTopComponent } from "../../components/cms/nav-top.component"
 import { SidebarComponent } from "../../components/cms/sidebar.component"
+import { ToastContainer } from "react-toastify"
 const AdminLayout = ()=>{
     return (
-        <>
+        <>  
+
 
         <NavTopComponent/>
-
-
+        <ToastContainer/>
         <div id="layoutSidenav">
             <SidebarComponent/>
             <div id="layoutSidenav_content">

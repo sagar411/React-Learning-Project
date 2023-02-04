@@ -1,6 +1,9 @@
-import { useState } from 'react';
+import { ErrorResponse } from '@remix-run/router';
+import { useState, useEffect } from 'react';
 import DataTable from 'react-data-table-component';
 import { BreadCrumb } from "../../components/cms/breadcrumb.component";
+import { getAllBanners } from '../../services/banner.service';
+import { LoadImage } from '../../components/image-view/load-image.component';
 const BannerListPage = () => {
     const columns = [
         {
@@ -9,7 +12,7 @@ const BannerListPage = () => {
         },
         {
             name: 'Image',
-            selector: row => row.image,
+            selector: row => <>{row.image ?<LoadImage src ={row.image}/>: "-"}</>//row.image,
         },
         {
             name: 'Status',
@@ -21,36 +24,21 @@ const BannerListPage = () => {
         },
     ];
 
-    let [data,setData]  = useState([{
-        "_id": "63cd675337e66a2699ceeb61",
-        "title": "Apple",
-        "image": "1674405715108-ff1796431df51f9abe1c44adb0c722ca - Copy.jpg",
-        "type": "brand",
-        "status": "inactive",
-        "createdAt": "2023-01-22T16:41:55.137Z",
-        "updatedAt": "2023-01-22T16:41:55.137Z",
-        "__v": 0
-    },
-    {
-        "_id": "63cd67c737e66a2699ceeb65",
-        "title": "Samsung",
-        "image": "1674405831073-ff1796431df51f9abe1c44adb0c722ca - Copy.jpg",
-        "type": "brand",
-        "status": "inactive",
-        "createdAt": "2023-01-22T16:43:51.082Z",
-        "updatedAt": "2023-01-22T16:43:51.082Z",
-        "__v": 0
-    },
-    {
-        "_id": "63cd6e3a91c0ab4b6662c822",
-        "title": "samsung update new",
-        "image": "1674464643518-ff1796431df51f9abe1c44adb0c722ca - Copy.jpg",
-        "type": "brand",
-        "status": "inactive",
-        "createdAt": "2023-01-22T17:11:22.126Z",
-        "updatedAt": "2023-01-23T09:04:03.544Z",
-        "__v": 0
-    }]);
+    let [data,setData]  = useState([]);
+
+    const getBannerData  =async()=>{
+        try{
+            let response =await getAllBanners();
+            if(response.status){
+                setData(response.result)
+            }
+        }catch(error){
+            console.log("Err", error)
+        }
+    }
+    useEffect(() => {
+        getBannerData();
+    }, [])
     return (
         <>
 

@@ -1,4 +1,4 @@
-import { postRequest } from "./axios.services";
+import { getRequest, postRequest } from "./axios.services";
 
 export const  bannerCreate =async(data)=>{
     try {
@@ -11,7 +11,7 @@ export const  bannerCreate =async(data)=>{
 
         Object.keys(data).map((key)=>{
             formData.append(key,data[key])
-            return;
+            return null;
         })
         let response = await postRequest("/label" ,formData,true,true);
 
@@ -23,5 +23,14 @@ export const  bannerCreate =async(data)=>{
 
     }catch(error){
         throw error;
+    }
+}
+export const getAllBanners = async ()=>{
+    try{
+        let banners = await getRequest("/label?type=banner");
+        return banners;
+    }catch(error){
+        //todo handle error
+        console.error("ERR", error)
     }
 }
