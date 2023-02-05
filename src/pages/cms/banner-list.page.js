@@ -2,9 +2,25 @@ import { ErrorResponse } from '@remix-run/router';
 import { useState, useEffect } from 'react';
 import DataTable from 'react-data-table-component';
 import { BreadCrumb } from "../../components/cms/breadcrumb.component";
-import { getAllBanners } from '../../services/banner.service';
+import { deleteBannerById, getAllBanners } from '../../services/banner.service';
 import { LoadImage } from '../../components/image-view/load-image.component';
+import { ActionButtons } from '../../components/action-btns/action-btns.component';
+import {toast} from"react-toastify"
 const BannerListPage = () => {
+    const deleteBanner =async (id)=>{
+       try{
+        let replay = await deleteBannerById(id);
+        if(replay.status){
+            toast.success(replay.msg)
+            getBannerData();
+        }else{
+            toast.error(replay.msg);
+
+        }
+       }catch(error){
+        console.log(error);
+       }
+    }
     const columns = [
         {
             name: 'Title',
@@ -20,7 +36,7 @@ const BannerListPage = () => {
         },
         {
             name: 'Action',
-            selector: row => "",
+            selector: row => <ActionButtons id={row._id} handleDelete = {deleteBanner} entity = "banner"></ActionButtons>,
         },
     ];
 
@@ -39,6 +55,8 @@ const BannerListPage = () => {
     useEffect(() => {
         getBannerData();
     }, [])
+
+   
     return (
         <>
 

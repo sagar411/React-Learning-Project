@@ -16,7 +16,7 @@ export const LoadImage = (props)=>{
   return(<>
   
      <LightGallery
-                onInit={onInit}
+                onInit={onInit}              
                 speed={500}
                 plugins={[lgThumbnail, lgZoom]}
             >

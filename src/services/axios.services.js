@@ -65,3 +65,18 @@ export const  getRequest = (url, is_strict = false)=>{
     return axiosInstance.get(url, headers);
 
 }
+
+export const deleteRequest = (url,is_strict = false)=>{
+    let headers = {
+
+    }
+    if(is_strict){
+        let token = localStorage.getItem("token")
+        headers = {
+            headers:{
+                "authorization" : "Bearer " +token
+            }
+        }                     
+    }
+    return axiosInstance.delete(url, headers);
+}

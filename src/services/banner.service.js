@@ -1,5 +1,5 @@
 import { getRequest, postRequest } from "./axios.services";
-
+import { deleteRequest } from "./axios.services";
 export const  bannerCreate =async(data)=>{
     try {
         let formData = new FormData();
@@ -32,5 +32,14 @@ export const getAllBanners = async ()=>{
     }catch(error){
         //todo handle error
         console.error("ERR", error)
+    }
+}
+
+export const deleteBannerById =async (id)=>{
+    try{
+        let response = await deleteRequest("/label/"+id, true);
+        return response;
+    }catch(error){
+        console.log(error);
     }
 }
