@@ -1,7 +1,8 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useEffect } from "react";
 import { Row, Col, Form, Button, Toast } from "react-bootstrap"
-const LabelFormComponent = ({ type, onSubmitEvent }) => {
+const LabelFormComponent = ({ type, onSubmitEvent, data = null }) => {
     let validationSchema = Yup.object().shape({
         title: Yup.string().required("Title is required").nullable(),
         link: Yup.string().nullable(),
@@ -17,9 +18,19 @@ const LabelFormComponent = ({ type, onSubmitEvent }) => {
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
-           onSubmitEvent(values);
+            onSubmitEvent(values);
         }
     })
+
+    useEffect(() => {
+        if (data) {
+            formik.setValues({
+                ...data,
+                image: null
+            })
+        }
+    }, [data])
+    // console.log("Formik",data, formik.values, formik.initialValues)
     return (<>
         <Row>
             <Col sm={12} md={12} className="my-1">
@@ -27,7 +38,7 @@ const LabelFormComponent = ({ type, onSubmitEvent }) => {
                     <Form.Group className="row mb-3" controlId="title" >
                         <Form.Label className="col-sm-3">Title</Form.Label>
                         <Col sm={9}>
-                            <Form.Control type="text" size="sm" name="title" onChange={formik.handleChange} value={formik.values.title|| ""} placeholder="Enter title" />
+                            <Form.Control type="text" size="sm" name="title" onChange={formik.handleChange} value={formik.values.title || ""} placeholder="Enter title" />
 
 
                             {
@@ -45,7 +56,7 @@ const LabelFormComponent = ({ type, onSubmitEvent }) => {
                             <Form.Group className="row mb-3" controlId="link" >
                                 <Form.Label className="col-sm-3">Link</Form.Label>
                                 <Col sm={9}>
-                                    <Form.Control type="url" size="sm" name="link" onChange={formik.handleChange} value={formik.values.link|| " "} placeholder="Enter title" />
+                                    <Form.Control type="url" size="sm" name="link" onChange={formik.handleChange} value={formik.values.link || " "} placeholder="Enter title" />
 
 
                                     {
@@ -97,14 +108,19 @@ const LabelFormComponent = ({ type, onSubmitEvent }) => {
                         <Col sm={3}>
 
                             {
-                                <img className="img img-fluid" alt="" src={formik.values.image && URL.createObjectURL(formik.values.image)} />
+                                formik.values.image ?
+
+                                    <img className="img img-fluid" alt="" src={formik.values.image && URL.createObjectURL(formik.values.image)} />
+                                    : <img className="img img-fluid" alt ="" src ={process.env.REACT_APP_API_URL + "/assets/" + data?.image} ></img>
+// {process.env.REACT_APP_API_URL + "/assets/" + data.image}
+
                             }
                         </Col>
                     </Form.Group>
 
                     <Form.Group className="row mb-3" controlId="status" >
                         <Col sm={{ offset: 3, span: 3 }}>
-                            <Button variant="success"  type="submit" size="sm">
+                            <Button variant="success" type="submit" size="sm">
                                 Submit
                             </Button>
                         </Col>

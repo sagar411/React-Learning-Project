@@ -80,3 +80,9 @@ export const deleteRequest = (url,is_strict = false)=>{
     }
     return axiosInstance.delete(url, headers);
 }
+
+export const putRequest =(url, data, is_strict=false,form_data=false)=>{
+    getHeaders(is_strict,form_data)
+   
+    return axiosInstance.put(url,data,headers);
+}
