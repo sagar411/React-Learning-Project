@@ -4,7 +4,19 @@ import { BreadCrumb } from "../../../components/cms/breadcrumb.component";
 import { ActionButtons } from "../../../components/action-btns/action-btns.component";
 import { getAllBrand } from "../../../services/brand.services"
 import { LoadImage } from "../../../components/image-view/load-image.component";
+import { toast } from "react-toastify";
+import { deleteBrandById } from "../../../services/brand.services";
 const BrandListPage = () => {
+
+    const deleteBrand =async(id)=>{
+        let replay = await deleteBrandById(id);
+        if(replay.status){
+            toast.success(replay.msg);
+            getBrandData();
+        }else{
+            toast.error(replay.msg)
+        }
+    }
     let [data,setData] = useState([]);
 
     const columns = [
@@ -21,7 +33,7 @@ const BrandListPage = () => {
             selector:row => row.status
         },{
             name:"Action",
-            selector:row =><ActionButtons id={row._id} entity="brand"></ActionButtons>
+            selector:row =><ActionButtons id={row._id} handleDelete={deleteBrand} entity="brand"></ActionButtons>
         }
 
     ]
