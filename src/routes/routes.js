@@ -12,6 +12,8 @@ import { useState,useEffect } from "react";
 import BannerListPage from "../pages/cms/banner-list.page";
 import BannerCreatePage from "../pages/cms/banner-create.page";
 import BannerEditPage from "../pages/cms/banner-edit.page";
+import BrandListPage from "../pages/cms/brand/brand-list.page";
+
 const PrivateComponent = ({component})=>{
     let is_logged_in = localStorage.getItem("token")
 //     let [is_logged_in,setIsLoogedIn] = useState(false);
@@ -53,7 +55,7 @@ const Routing = () => {
                         <Route path = "banner" element= {<BannerListPage/>}/>
                         <Route path = "banner/create" element = {<BannerCreatePage/>}/>
                         <Route path="banner/:id" element={<BannerEditPage></BannerEditPage>}/>
-
+                        <Route path ="brand" element = {<BrandListPage></BrandListPage>}/>
                     </Route>
                     <Route path="/customer" element={<PrivateComponent component={<AdminLayout />}/>}>
                     <Route index element={<AdminDashboard />} />

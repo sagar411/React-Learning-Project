@@ -60,7 +60,6 @@ const BannerListPage = () => {
     return (
         <>
 
-            
             <div className="container-fluid px-4">
             <BreadCrumb title="Banner Page" pageTitle="Banner List" addBtn={true} path="/admin/banner/create" page="Banner" />
             

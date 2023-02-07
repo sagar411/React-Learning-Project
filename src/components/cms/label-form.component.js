@@ -74,7 +74,8 @@ const LabelFormComponent = ({ type, onSubmitEvent, data = null }) => {
                     <Form.Group className="row mb-3" controlId="status" >
                         <Form.Label className="col-sm-3">Status</Form.Label>
                         <Col sm={9}>
-                            <Form.Select size="sm" name="status" onChange={formik.handleChange} required>
+                            <Form.Select size="sm" name="status" onChange={formik.handleChange} value={formik.values.status|| " "} required>
+                                <option >---Choose Status---</option>
                                 <option value="active">Active</option>
                                 <option value="inactive">Inactive</option>
                             </Form.Select>
