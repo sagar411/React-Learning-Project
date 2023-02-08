@@ -46,7 +46,7 @@ const  BannerEditPage = () => {
     return (
         <>
             <div className="container-fluid px-4">
-                <BreadCrumb title="Banner Creeate Page" pageTitle="Banner Create" addBtn={false}  page="Banner" />
+                <BreadCrumb title="Banner Update Page" pageTitle="Banner Create" addBtn={false}  page="Banner" />
                 <div className="card mb-4">
                     <div className="card-body">
                         <LabelFormComponent 
