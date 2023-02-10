@@ -15,6 +15,7 @@ import BannerEditPage from "../pages/cms/banner-edit.page";
 import BrandListPage from "../pages/cms/brand/brand-list.page";
 import BrandCreate from "../pages/cms/brand/brand-create.page";
 import BrandEditPage from "../pages/cms/brand/brand-edit.page";
+import CategoryListPage from "../pages/cms/category/category-list.page";
 
 const PrivateComponent = ({component})=>{
     let is_logged_in = localStorage.getItem("token")
@@ -60,7 +61,8 @@ const Routing = () => {
                         <Route path ="brand" element = {<BrandListPage></BrandListPage>}/>
                         <Route path="brand/create" element={<BrandCreate></BrandCreate>}/>
                         <Route path="brand/:id" element={<BrandEditPage></BrandEditPage>}></Route>
-                    </Route>
+                        <Route path="category" element = {<CategoryListPage></CategoryListPage>}></Route>
+                   </Route>
                     <Route path="/customer" element={<PrivateComponent component={<AdminLayout />}/>}>
                     <Route index element={<AdminDashboard />} />
                     </Route>

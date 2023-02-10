@@ -1,4 +1,3 @@
-import { ErrorResponse } from '@remix-run/router';
 import { useState, useEffect } from 'react';
 import DataTable from 'react-data-table-component';
 import { BreadCrumb } from "../../components/cms/breadcrumb.component";
@@ -61,7 +60,9 @@ const BannerListPage = () => {
         <>
 
             <div className="container-fluid px-4">
-            <BreadCrumb title="Banner Page" pageTitle="Banner List" addBtn={true} path="/admin/banner/create" page="Banner" />
+            <BreadCrumb title="Banner Page"
+             pageTitle="Banner List" 
+             addBtn={true} path="/admin/banner/create" page="Banner" />
             
                 <div className="card mb-4">
                     <div className="card-body">
